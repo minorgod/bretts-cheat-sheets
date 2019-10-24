@@ -6,7 +6,7 @@ For compatibility with older apps, you may need to add something like this to yo
 
  `/etc/mysql/mysql.conf.d/mysqld.cnf`
 
-```mysql
+```apacheconf
 #The commented out line is what MySQL 5.7 defaults to in case you want to restore it. 
 #sql_mode = ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 
@@ -16,7 +16,7 @@ sql_mode = NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREAT
 
 You could also put something like this in an SQL file if you just want to temporarily override some of the default mysql config vars:
 
-```mysql
+```sql
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
@@ -25,8 +25,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_D
 
 # --- Now restore the default settings...
 
-SET FOREIGN_KEY_CHECKS=@ORIGINAL_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@ORIGINAL_UNIQUE_CHECKS;
-SET SQL_MODE=@ORIGINAL_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+SET SQL_MODE=@OLD_SQL_MODE;
 ```
-

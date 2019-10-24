@@ -38,4 +38,3 @@ php artisan ui vue
 php artisan ui vue
 php artisan ui vue --auth
 ```
-
