@@ -1,0 +1,219 @@
+<dataConfig>
+  <dataSource 	type="JdbcDataSource" 
+              	driver="com.mysql.jdbc.Driver"
+              	url="jdbc:mysql://db1.heels.com/heels_xcart_beta1" 
+              	user="heels_xcart" 
+              	password="h33l5"
+		 />
+ 
+	<document name="doc">
+		<entity name="products" 
+	            query="select productid,productcode,product,descr,fulldescr,cdseo_url,add_date,forsale,manufacturerid,style_id,fit,origin,color as colorid,list_price,orderby,additional_images,not_returnable,boots_featured,brand_featured,whole_sizes_only,expected_ship_date,video_id,
+
+CAST(CONCAT_WS(',',
+if(ankle_wrap='Y','ankle-wrap',NULL),
+if(comfort='Y','comfort',NULL),
+if(open_toe='Y','open-toe',NULL),
+if(slingback='Y','slingback',NULL),
+if(flats='Y','flats',NULL),
+if(wedges='Y','wedges',NULL),
+if(stiletto_heels='Y','stiletto-heels',NULL),
+if(platform='Y','platform',NULL),
+if(pointed_toe='Y','pointed-toe',NULL),
+if(rounded_toe='Y','rounded-toe',NULL),
+if(block_heel='Y','block-heel',NULL),
+if(ankle_strap='Y','ankle-strap',NULL)
+) AS CHAR) as product_attributes,
+
+CAST(CONCAT_WS(',',
+if(heel_height = '0','none',NULL),
+if(heel_height = '1','under-1-inch',NULL),
+if(heel_height = '2','1-1.75-inch',NULL),
+if(heel_height = '3','2-2.75-inch',NULL),
+if(heel_height = '4','3-3.75-inch',NULL),
+if(heel_height = '5','4-4.75-inch',NULL),
+if(heel_height = '6','over-5-inch',NULL)
+) AS CHAR) as heel_height,
+
+upper_material,
+sole_material,
+(UNIX_TIMESTAMP()-add_date &lt; 86400 * 40) as isNew
+
+from xcart_products" transformer='RegexTransformer'>
+			<field column="productid"/>
+			<field column="productcode"/>
+			<field column="product"/>
+			<field column="cdseo_url" name="product_url"/>
+			<field column="add_date" />
+			<field column="heel_height" />
+			<field column="fit" />
+			<field column="forsale" />
+			<field column="list_price" />
+			<field column="orderby" />
+			<field column="additional_images" />
+			<field column="not_returnable" />
+			<field column="boots_featured" />
+			<field column="brand_featured" />
+			<field column="whole_sizes_only" />
+			<field column="expected_ship_date" />
+			<field column="video_id" />
+			<field column="origin" />
+			<field column="product_attributes" name="product_attributes" splitBy="," />
+			<field column="upper_material" />
+			<field column="sole_material" />
+			
+			<entity name="video" query="select video_filename,is_justfab FROM heels_videos WHERE video_id='${products.video_id}'">
+				<field column="video_filename" />
+				<field column="is_justfab" name="video_is_justfab" />
+			</entity>
+
+			<entity name="products_manufacturer"
+			        query="select manufacturer,cdseo_url from xcart_manufacturers where manufacturerid ='${products.manufacturerid}'">
+				<field column="manufacturer" /> 
+				<field column="cdseo_url" name="manufacturer_url"/> 
+			</entity>
+
+			<entity name="products_pricing"
+			        query="select price, (price &lt; ${products.list_price}) as isSale FROM xcart_pricing where productid ='${products.productid}' AND variantid != 0 LIMIT 1">
+				<field column="price" /> 
+				<field column="isSale" />
+			</entity>
+
+			<entity name="products_variants_available"
+						        query="select SUM(avail) as avail from xcart_variants where productid ='${products.productid}' and variantid != 0">
+				<field column="avail" name="quantity"/> 
+			</entity>
+
+			<entity name="variants"
+				query="select productcode from xcart_variants where productid ='${products.productid}' and variantid != 0">
+				<field column="productcode" name="variant_productcodes"/> 
+			</entity>
+
+			<entity name="category_main"
+						        query="select categoryid from xcart_products_categories where productid ='${products.productid}' and main='Y'">
+				<field column="categoryid" /> 
+				<entity name="category_main"
+						        query="select category from xcart_categories where categoryid ='${category_main.categoryid}'">
+					<field column="category" /> 
+					<field column="category_h1"/>
+
+				</entity>
+			</entity>
+
+			<entity name="products_categories"
+						        query="select categoryid from xcart_products_categories where productid ='${products.productid}'">
+				<field column="categoryid" name="categoryids" /> 
+				<entity name="products_categories"
+						        query="select category,cdseo_url from xcart_categories where categoryid ='${products_categories.categoryid}'">
+					<field column="category" name="categories" />
+					<field column="cdseo_url" name="category_urls" />  
+				</entity>
+			</entity>
+
+
+
+			<entity name="occasion"
+				query="select c.cdseo_url from xcart_products_categories pc  INNER JOIN xcart_categories c ON pc.categoryid = c.categoryid AND c.category_type_id='11' WHERE pc.productid ='${products.productid}'">
+				
+				<field column="cdseo_url" name="occasion" /> 
+			</entity>
+			
+<!--
+			<entity name="persona"
+				query="select c.category, ps.persona_name as persona from xcart_products_categories pc  INNER JOIN xcart_categories c ON pc.categoryid = c.categoryid AND c.category_type_id='8' INNER JOIN heels_personas ps ON c.persona_id = ps.persona_id WHERE pc.productid ='${products.productid}'">
+				
+				<field column="persona" name="persona" /> 
+			</entity>
+-->
+			<entity name="persona"
+				query="select c.cdseo_url as persona from xcart_products_categories pc  INNER JOIN xcart_categories c ON pc.categoryid = c.categoryid AND c.category_type_id='8' WHERE pc.productid ='${products.productid}'">
+				
+				<field column="persona" name="persona" /> 
+			</entity>
+
+			<entity name="style"
+						        query="select style_name,style_url,style_meta_keywords from heels_styles where style_id ='${products.style_id}'">
+				<field column="style_name" /> 
+				<field column="style_meta_keywords" /> 
+				<field column="style_url" /> 
+	
+			</entity>
+			<entity name="product_tags"
+						        query="select tag as tags from heels_product_tags where productid ='${products.productid}'">
+				<field column="tags" name="tags" /> 
+			</entity>
+			<entity name="color"
+				query="select color_name,related_colors from heels_colors where id ='${products.colorid}'">
+				<field column="color_name" name="color" /> 
+			</entity>
+			<entity name="product_meta_keywords"
+				query="select value FROM xcart_extra_field_values WHERE productid='${products.productid}' and fieldid='1'">
+				<field column="value" name="meta_keywords" />	
+			</entity>
+			<entity name="product_meta_title"
+				query="select value FROM xcart_extra_field_values WHERE productid='${products.productid}' and fieldid='2'">
+				<field column="value" name="meta_title" />	
+			</entity>
+			<entity name="product_meta_description"
+				query="select value FROM xcart_extra_field_values WHERE productid='${products.productid}' and fieldid='3'">
+				<field column="value" name="meta_description" />	
+			</entity>
+			<entity name="product_wholesale_cost"
+				query="select value FROM xcart_extra_field_values WHERE productid='${products.productid}' and fieldid='4'">
+				<field column="value" name="wholesale_cost" />	
+			</entity>
+			<entity name="avail_sizes_entity" transformer="RegexTransformer" query="SELECT productcode as variant_productcode FROM xcart_variants WHERE productid='${products.productid}' AND avail>0 AND variantid!=0">
+				<field column="variant_productcode" name="avail_sizes" regex="([A-Z0-9]+)-([0-9.]+)" replaceWith="$2"/>
+			</entity>
+			<!--
+			<entity name="size_5" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-5'">
+				<field column="avail" name="size_5" />
+			</entity>
+			<entity name="size_5_5" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-5.5'">
+				<field column="avail" name="size_5_5" />
+			</entity>
+			<entity name="size_6" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-6'">
+				<field column="avail" name="size_6" />
+			</entity>
+						<entity name="size_6_5" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-6.5'">
+				<field column="avail" name="size_6_5" />
+			</entity>
+			<entity name="size_7" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-7'">
+				<field column="avail" name="size_7" />
+			</entity>
+			<entity name="size_7_5" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-7.5'">
+				<field column="avail" name="size_7_5" />
+			</entity>
+			<entity name="size_8" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-8'">
+				<field column="avail" name="size_8" />
+			</entity>
+			<entity name="size_8_5" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-8.5'">
+				<field column="avail" name="size_8_5" />
+			</entity>
+			<entity name="size_9" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-9'">
+				<field column="avail" name="size_9" />
+			</entity>
+			<entity name="size_9_5" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-9.5'">
+				<field column="avail" name="size_9_5" />
+			</entity>
+			<entity name="size_10" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-10'">
+				<field column="avail" name="size_10" />
+			</entity>
+			<entity name="size_10_5" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-10.5'">
+				<field column="avail" name="size_10_5" />
+			</entity>
+			<entity name="size_11" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-11'">
+				<field column="avail" name="size_11" />
+			</entity>
+			<entity name="size_11_5" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-11.5'">
+				<field column="avail" name="size_11_5" />
+			</entity>
+			<entity name="size_12" query="SELECT avail FROM xcart_variants WHERE productid='${products.productid}' AND productcode LIKE '%-12'">
+				<field column="avail" name="size_12" />
+			</entity>
+			-->
+		</entity>
+	</document>
+</dataConfig>
+
+
