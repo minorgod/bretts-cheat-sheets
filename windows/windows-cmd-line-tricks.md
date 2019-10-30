@@ -20,7 +20,7 @@ net use <driveletter>: \\<server>\<sharename> /USER:<domain>\<username> <passwor
 
 ```powershell
 #run cmd.exe as admin then run these commands...
-taskkill /f /im explorer. exe
+taskkill /f /im explorer.exe
 cd /d %userprofile%\AppData\Local\Microsoft\Windows\Explorer attrib –h iconcache_*.db del iconcache_*.db start explorer
 ```
 

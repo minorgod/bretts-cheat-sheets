@@ -43,14 +43,14 @@ Having a bug tracking system doesn't make bug handling efficient and CI/CD doesn
 - Is your infrastructure setup under version control / available as code?
 - What's the workflow from the planning to the finished task?
 - How do you prepare for disaster recovery?
-- Is there a standardised development environment? Is it enforced?
+- Is there a standardized development environment? Is it enforced?
 - How quickly can you setup a new local test environment for the product? (minutes / hours / days)
 - How quickly can you respond to security issues in the code or dependencies?
 - Are all developers allowed to have local admin access of their computers?
 
 # The Team
 
-- How is the work organised?
+- How is the work organized?
 - How does the intra/inter-team communication typically work?
 - How are differences of opinions resolved?
 - Who sets the priorities / schedule?
