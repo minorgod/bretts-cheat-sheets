@@ -5,6 +5,7 @@
 You might also be interested in 
 
 - [Regex Visualizer](https://emailregex.com/regex-visual-tester/index.html) - to help test regexes
+- [RegexTester](https://www.regextester.com/) - a web site with a simple regex tester
 
 ------
 
