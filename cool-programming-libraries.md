@@ -6,6 +6,8 @@ A random assortment of libs for whatever language. I started this list because I
 
  Google has a shit-ton (approx 1,600 repositories) of cool open source projects on github. Check them out at https://github.com/google 
 
+Better yet, check out the **[Google Open Source]( https://opensource.google/)** web site or **[explore their featured projects]( https://opensource.google/projects/explore/featured )**.
+
 ### Some Cool Google Projects
 
 - [**GSON**](https://github.com/google/gson) - Google's JSON library for Java.  Convert Java Objects into JSON and back. Faster than Jackson for small objects such as api responses. For serializing large objects Jaskson is still faster and/or more efficient.  
