@@ -32,3 +32,12 @@ git commit -m "Removing files from version control"
 git pull
 git push
 ```
+
+## Remove the history for a particular file
+
+You should really not do this if you've pushed this to a shared repository already, but if you REALLY need to get something out of your commit history, you can rewrite every commit so they no longer contain that file by using git filter-branch...
+
+```shell
+git filter-branch --tree-filter 'rm -f thenameofthefile.ext' HEAD
+```
+
