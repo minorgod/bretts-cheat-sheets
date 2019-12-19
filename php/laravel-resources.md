@@ -13,5 +13,7 @@
 ## Blogs and Developers to follow
 
 - [Jeffrey Way](https://github.com/JeffreyWay) - Creator of Laracasts and long time Laravel contributor. 
+- [Marcel Pociot](https://pociot.dev/) - Laravel centric blogger
+  - [Github Repository](https://github.com/mpociot) -  https://github.com/mpociot 
+  - developer at  [BeyondCode](https://beyondco.de/)
 
-- [Marcel Pociot](https://pociot.dev/) - Laravel centric blogger - developer at  [BeyondCode](https://beyondco.de/)

@@ -12,15 +12,15 @@
 
 * [MarkText](http://electronjs.org/apps/marktext) - free electron based markdown editor
 
-## API Mocking
+## API Tools
 
-* https://openapi.tools/
-
+* https://openapi.tools/ - a semi-curated API tool resource. 
 * [Mockoon](https://mockoon.com/) - instant electron based mock API server
+*  [Standard Library](https://stdlib.com/) - this looks really cool....build entire api-driven workflows across multiple APIs
 
 ## PHP Stuff
 
-[Laravel PHP Framework](https://laravel.com)
+**[Laravel PHP Framework](https://laravel.com)**
 
 * [Main DOCS](https://laravel.com/docs)
   * [Cashier](https://laravel.com/docs/master/billing) - Stripe subscription billing library
@@ -37,6 +37,12 @@
 * https://electronjs.org/
 * https://electronjs.org/apps - curated electron apps
 
+## Javascript Frameworks
+
+[**Vue.js**](https://vuejs.org/) - my favorite js framework
+
+
+
 ## UI Design Stuff
 
 **Tailwind CSS**
@@ -44,4 +50,17 @@
 - Learn it - https://tailwindcss.com/screencasts/
 - Love it - https://tailwindcss.com/components
 - Docs - https://tailwindcss.com/docs/installation
+
+**Vuetify**  - A mackin Vue UI library. 
+
+- [Version 1.5 Docs](https://v15.vuetifyjs.com/en/)
+- [Version 2.0 Docs](https://vuetifyjs.com/en/)
+
+**[FilePond](https://pqina.nl/filepond/)** - a pimpin file upload library
+
+- [FilePond Vue adapter](https://github.com/pqina/vue-filepond)
+
+**[Element UI](https://element.eleme.io/)** - another Vue UI lib
+
+- Has some particularly nice [table components](https://element.eleme.io/#/en-US/component/table) with features for ppl who need fixed width cols, with fixed headers, but still scrollable. 
 

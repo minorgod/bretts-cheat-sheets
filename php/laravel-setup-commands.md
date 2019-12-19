@@ -5,9 +5,17 @@
 ```
  composer global require laravel/installer
  laravel new blog
+ cd blog
 ```
 
-**Generate all the tables and stubs...**
+**Install Laravel Dusk for browser testing**
+
+```
+composer require --dev laravel/dusk
+php artisan dusk:install
+```
+
+**Generate all the tables and stubs...****
 
 ```
 php artisan key:generate
@@ -25,9 +33,10 @@ php artisan vendor:publish
 **Add some other packages:** 
 
 ```
-composer require laravel/ui anahkiasen/former laravelcollective/html bestmomo/filemanager
+composer require laravel/ui anahkiasen/former laravelcollective/html bestmomo/filemanager anahkiasen/former
 php artisan vendor:publish --provider="Former\FormerServiceProvider"
 php artisan vendor:publish --provider="Bestmomo\Filemanager\FilemanagerServiceProvider"
+php artisan vendor:publish --provider="Former\FormerServiceProvider"
 ```
 
 **add scaffolding for vue**
@@ -38,3 +47,4 @@ php artisan ui vue
 php artisan ui vue
 php artisan ui vue --auth
 ```
+
