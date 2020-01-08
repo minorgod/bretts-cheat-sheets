@@ -64,3 +64,11 @@
 
 - Has some particularly nice [table components](https://element.eleme.io/#/en-US/component/table) with features for ppl who need fixed width cols, with fixed headers, but still scrollable. 
 
+
+
+## Server Config Tools and Services
+
+[DNS Record Splitter]( https://www.mailhardener.com/tools/dns-record-splitter ) - for fixing fubar SPF records that Google gives and you can't paste into your CloudDNS admin interface. Just paste the SPF record into this splitter and check the box to have it quoted to work with Google CloudDNS. You might also want to try the other services offered by  https://www.mailhardener.com/ to secure your email. 
+
+[DNSStuff.com free tools](https://tools.dnsstuff.com/) - The original site for testing your DNS records. I've been using this site for like 15 years. A great free service to test everything related to your DNS and other networking and mail setups. 
+

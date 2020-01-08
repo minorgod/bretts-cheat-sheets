@@ -4,6 +4,10 @@ This info assumes you've already set up Google Cloud DNS for your domain via:
 
  https://console.cloud.google.com/net-services  
 
+You might want to check out the PowerShell tools to manage DNS Zones via Windows Powershell:
+
+ https://cloud.google.com/tools/powershell/docs/dns 
+
 Lets assume you've already set up Nginx to host a site called **example.com**. 
 
 ## Install certbot plugin for nginx
