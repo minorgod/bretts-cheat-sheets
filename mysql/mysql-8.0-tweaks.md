@@ -1,6 +1,17 @@
-# MySQL 5.7 Tweaks
+---
+title: MySQL 8.0 Tweaks
+description: Some tweaks you might need to make to your MySQL 8.0 settings to make your life easier. 
+---
+
+# MySQL 8.0 Tweaks
 
 ## Ubuntu / Debian
+
+In MySQL 8.0, the **default authentication plugin has changed** from mysql_native_password to caching_sha2_password, and the 'root'@'localhost' administrative account uses caching_sha2_password by default. If you prefer that the root account use the previous default authentication plugin (mysql_native_password), run this...
+
+```bash
+sudo mysql -u root -Bse "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; quit;"
+```
 
 For compatibility with older apps, when you upgrade from MySQL 5.6 to 5.7 or higher you might notice some errors related to "GROUP BY" clauses or other SQL errors that previously worked fine in MySQL 5.6 and lower. This is due to the new default **`sql_mode`** settings in MySQL 5.7 and higher. To permanently revert back to the old behavior you may need to edit the **`sql_mode`** variable in your mysqld config. In Ubuntu or other Debian based releases this is in:
 

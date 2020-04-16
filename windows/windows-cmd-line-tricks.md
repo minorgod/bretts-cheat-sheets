@@ -2,6 +2,14 @@
 
 # Windows Command Line Tricks
 
+**Generate a Battery Health Report**
+
+Open PowerShell in admin mode (hit the windows + x keys and select Windows PowerShell (Admin) from the menu that appears). Then type:
+
+```
+ powercfg /batteryreport /output C:\battery-report.html
+```
+
 **Access a network share as a different user:**
 
 ```powershell
@@ -28,7 +36,7 @@ cd /d %userprofile%\AppData\Local\Microsoft\Windows\Explorer attrib –h iconcac
 
 ```powershell
 #run cmd.exe as admin then run these commands...
-taskkill /f /im explorer. exe
+taskkill /f /im explorer.exe
 cd /d %userprofile%\AppData\Local\Microsoft\Windows\Explorer attrib –h thumbcache_*.db del thumbcache_*.db start explorer
 ```
 

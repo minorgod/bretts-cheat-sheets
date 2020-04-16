@@ -111,12 +111,15 @@ $cfg['TempDir'] = '';
 
 // save queries in a history table in the db
 $cfg['QueryHistoryDB'] = true;
-$cfg['QueryHistoryMax'] = 200; //default 25
+$cfg['QueryHistoryMax'] = 2000; //default 25
 //open, closed or disabled initial visual slider states
 $cfg['InitialSlidersState'] = 'open';
 // Activates a tab containing options for developers of phpMyAdmin in user prefs tab.
 $cfg['UserprefsDeveloperTab'] = true;
 // Enable logging queries and execution times to be displayed in the console’s Debug SQL tab.
 // $cfg['DBG']['sql'] = true;
+
+
+
 ```
 

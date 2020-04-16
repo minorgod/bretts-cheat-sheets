@@ -2,6 +2,18 @@
 
 Some common tasks you may want/need to perform on your cpanel server. 
 
+## Get various system info:
+
+```bash
+#Get the main IP address of the server
+cat  /var/cpanel/mainip
+cat /var/cpanel/root.accts
+cat /var/cpanel/nameserverips.yaml
+cat /etc/hosts
+```
+
+
+
 ## Tweak phpMyAdmin config
 
 ```bash
@@ -26,9 +38,9 @@ Fix PHP process not found errors after upgrading some packages.
 You may see this type of error when logging into phpMyAdmin in CPanel after upgrading some software, particularly CURL on older CentOS systems, particularly if you used the cityfan repository to update to newer and unsupported system libs. 
 
 > **Internal Server Error**
->
+> 
 > 500
->
+> 
 > No response from subprocess (php):
 
 To check for the specific lib causing the error, watch the main CPanel error log:
@@ -96,4 +108,76 @@ Check it with
 ```shell
 ldconfig -p | grep local
 ```
+
+## Enable xdebug for PHP
+
+In WHM, the easiest way to install xdebug is via the php PECL installer built into WHM. Just look for a link called **"module installers"** under the "software" section. Once you locate it, just click the "manage" link in the PHP PECL section. At the bottom of that page you will see a list of any modules already installed, so you should check to be sure it's not installed already. If not, do a search for xdebug via the search box and install it via the GUI. Then, to use it, you'll either need to allow TCP port 9000 through your firewall in both directions, or use an ssh tunnel (preferred). Either way you'll need to tweak your xdebug config file. It will usually be in a php.d subdirectory in the dir where your php.ini file is...
+
+`php -i|grep php.ini`
+
+```bash
+#find your php.ini....
+php -i|grep php.ini
+
+# you should see output such as....
+# Configuration File (php.ini) Path => /opt/cpanel/ea-php73/root/etc
+# Loaded Configuration File => /opt/cpanel/ea-php73/root/etc/php.ini
+# In this case your config file for xdebug will likely be in 
+# /opt/cpanel/ea-php73/root/etc/php.d/zzzzzzz-pecl.ini
+# if it was installed via PECL (aka "pickle") it might be configured via
+# or in a file suh as
+# /opt/cpanel/ea-php73/root/etc/php.d/000-xdebug.ini
+
+nano /opt/cpanel/ea-php73/root/etc/php.ini
+```
+
+you should see output such as....
+
+`Configuration File (php.ini) Path => /opt/cpanel/ea-php73/root/etc`
+`Loaded Configuration File => /opt/cpanel/ea-php73/root/etc/php.ini`
+
+In this case your config file for xdebug will likely be in 
+
+`/opt/cpanel/ea-php73/root/etc/php.d/zzzzzzz-pecl.ini`
+
+or if it was not installed via PECL it might be in something like
+
+`/opt/cpanel/ea-php73/root/etc/php.d/000-xdebug.ini`
+
+Edit the file: 
+
+`nano /opt/cpanel/ea-php73/root/etc/php.d/zzzzzzz-pecl.ini`
+
+Put the following in to enable remote debug via ssh tunnel....
+
+```
+zend_extension="xdebug.so"
+xdebug.remote_enable=1
+xdebug.remote_host=127.0.0.1
+xdebug.remote_port=9000
+xdebug.ide_key=PHPSTORM
+```
+
+Assuming you're using PUTTY for SSH, you'll need to set up a tunnel on port 9000. In the PUTTY, load a saved session for your server if you have one, or create one and save it. Then be sure it is loaded and then go to the connection options under the SSH section, click the "Tunnels" option. Under the "Source Port" put 9000. Under the destination put "localhost:9000". Click the "remote" radio button. Then click "ADD".    Here's a screenshot of how it should look:
+
+![](https://raw.githubusercontent.com/minorgod/markdown-image-uploads/master/2020/02/07-19-15-09-image-20200207191141359.png)
+
+Save these tunnel settings with your loaded connection settings by scrolling back up and clicking the "Session" option at the top of the settings list, then click "Save". 
+
+If you did not want to use an SSH tunnels (bad idea), then you'll need to make sure that port 9000 is allowed through both your local and remote firewalls, and set up your xdebug config like this:
+
+```ini
+zend_extension="xdebug.so"
+xdebug.remote_enable=1
+xdebug.remote_port=9000
+xdebug.ide_key=PHPSTORM
+# Put your own ip address here...
+xdebug.remote_host=123.456.789.111
+# OR enable the remote_connect_back option below 
+# to allow connections from any IP
+#xdebug.remote_connect_back=1
+
+```
+
+
 

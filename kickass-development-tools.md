@@ -39,7 +39,8 @@
 
 ## Javascript Frameworks
 
-[**Vue.js**](https://vuejs.org/) - my favorite js framework
+- [**Vue.js**](https://vuejs.org/) - my favorite js framework
+  - [Vue useWeb](https://tarektouati.github.io/vue-use-web/) - Web APIs implemented as Vue.js composition functions
 
 
 
