@@ -1,5 +1,21 @@
 # WSL Cheat Sheet
 
+## Set Hypervisor Launch Type
+
+This will Enable or Disable VT-X so you can run VMs that don't play nice with Hyper-V (Note: this will break WSL until you re-enable it and reboot!!!!) Open an elevated command prompt and run these commands to....
+
+### View your hypervisorlaunchtype setting
+
+`bcdedit`
+
+### Disable hypervisorlaunchtype (which enables VT-X)
+
+`bcdedit /set {current} hypervisorlaunchtype off`
+
+### Enable hypervisorlaunchtype (which disables VT-X)
+
+`bcdedit /set {current} hypervisorlaunchtype Auto`
+
 ## Get UID value by specific distro and user.
 
 ```
