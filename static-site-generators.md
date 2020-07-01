@@ -4,6 +4,10 @@
 
 [Hugo](https://gohugo.io/) - static site generator that claims to be the world's fastest.
 
+### Python
+
+[Lektor](https://www.getlektor.com/) - looks cool...it claims... "A flexible and powerful static content management system for building complex and beautiful websites out of flat files — for people who do not want to make a compromise between a CMS and a static blog engine."
+
 ## Ruby
 
 [Jekyll](https://jekyllrb.com/) - Pretty popular. Used by [GitHub Pages](https://pages.github.com/). Typically you use a Ruby based command line tool to run the jekyll commands, but it's available in other flavors as well if you hate Ruby. 
@@ -11,6 +15,12 @@
 ## NodeJS
 
 [Gatsby](https://www.gatsbyjs.org/) - Way beyond a static site generator, it basically lets you build PWAs with SSR but in a way that is more like a static site generator based on React components, with the ability to pull in data and content from basically anywhere. 
+	Example: [Material UI Theme starter](https://github.com/hupe1980/gatsby-theme-material-ui) - also see here.
+						https://github.com/hupe1980/gatsby-theme-material-ui/tree/master/packages
+	Tutorial: https://strapi.io/blog/build-a-static-blog-with-gatsby-and-strapi
+	Tutorial: https://www.codespot.org/how-to-build-a-blog-with-gatsby-and-netlify/
+	Example Site: https://codesandbox.io/s/b84oz?file=/src/components/layout.js
+	Material UI Component Demo: https://codesandbox.io/s/xkgzj?file=/demo.js
 
 [Eleventy](https://www.11ty.dev/) - Like Jekyll, but less strict about some stuff and also written in NodeJS instead of Ruby. Becuase, why not?
 

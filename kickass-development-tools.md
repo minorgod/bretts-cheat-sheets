@@ -1,22 +1,25 @@
 # Kickass Development Tools
 
+All or most of these tools should probably be installed with [scoop.sh](https://scoop.sh/), [chocolatey](https://chocolatey.org/install), or some other windows package manager. I prefer scoop whenever possible. 
+
 ## IDE's
 
 * [VSCode](https://code.visualstudio.com/) - FREE Typescript centric IDE for the web.
-
+* [CodeSandbox.io](https://codesandbox.io/) - online editors with integrated js libs. Great for posting example code and quick POCs.  
 * JetBrains - [IntelliJ](https://www.jetbrains.com/idea/), [PHPStorm](https://www.jetbrains.com/phpstorm/), [Webstorm](https://www.jetbrains.com/webstorm/), etc. 
-
+* [Stoplight Studio](https://stoplight.io/studio/) - A fantastic and free OpenAPI editor from [Phil Sturgeon](https://phil.tech/), the same guy who wrote one of the best books on API design and development. 
 * [https://repl.it/](https://repl.it/) - online editor for all languages. 
-
 * [Typora](https://www.typora.io/) - a decent visual markdown editor - free during beta
-
 * [MarkText](http://electronjs.org/apps/marktext) - free electron based markdown editor
+* 
 
 ## API Tools
 
 * https://openapi.tools/ - a semi-curated API tool resource. 
+* [httpbin.org](http://httpbin.org/) - a simple and super-useful HTTP Request & Response service for testing. Can also be run locally in a docker container
 * [Mockoon](https://mockoon.com/) - instant electron based mock API server
 *  [Standard Library](https://stdlib.com/) - this looks really cool....build entire api-driven workflows across multiple APIs
+*  [flasgger](https://github.com/flasgger/flasgger) - Python-specific Easy OpenAPI specs and Swagger UI for your Flask API http://flasgger.pythonanywhere.com/
 
 ## PHP Stuff
 
