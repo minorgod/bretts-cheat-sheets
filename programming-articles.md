@@ -28,3 +28,13 @@ Must-read info for API developers -- it's a [book](https://apisyouwonthate.com/b
 
 [LogRocket Blog](https://blog.logrocket.com/) - just more decent tech blog articles. I discovered the [Prisma SQL libs](https://blog.logrocket.com/an-introduction-to-prisma-2/) for NodeJS through them. 
 
+# Short But Good Reads
+
+[**Methods Are Affordances, Not Abilities**](https://adamwathan.me/2017/01/24/methods-are-affordances-not-abilities/) - [Adam Wathan](https://adamwathan.me/)
+
+[Beginner's Guide to Abstration](https://jesseduffield.com/beginners-guide-to-abstraction/) - Jesse Duffield
+
+[The Wrong Abstraction](https://www.sandimetz.com/blog/2016/1/20/the-wrong-abstraction) - Sandi Metz (see also https://www.sandimetz.com/blog)
+
+[Design Stamina Hypothesis](https://martinfowler.com/bliki/DesignStaminaHypothesis.html) (Is it worth the effort to design software well?) - Martin Fowler
+
