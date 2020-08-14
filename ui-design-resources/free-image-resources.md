@@ -2,6 +2,16 @@
 
 Sites offering free images, placeholder images, and other visual design stuff. 
 
+## Free SVG Icons
+
+- [Icons8](https://icons8.com/icons) - not only a great selection of free icons, but they also make some killer software including [Lunacy](https://icons8.com/lunacy), the free "Sketch" alternative. 
+- [FlatIcon](https://www.flaticon.com/) 
+- [VectorStock](https://www.vectorstock.com/free-vectors)
+- [FreePik](https://www.freepik.com/) - more than just vectors. Part search engine - seems to aggregate free images from other free image sites. 
+- [IconScout](https://iconscout.com/free-icons) - must create account to download (boooo!)
+- [Vector Khazana](https://www.vectorkhazana.com/free-vectors) - very limited free downloads and you must create an account to download (booo hiss!)
+- [The Noun Project](https://thenounproject.com/) - some free and some paid. You must create and account to download (sigh). 
+
 ## Free High Res Image Downloads
 
 - **[Unsplash](https://unsplash.com)** - Tons of awesome images here. Great search that can be filtered by orientation and color. 

@@ -1,0 +1,9 @@
+# PHP Resources
+
+- [Laravel Resources](laravel-resources.md)
+- [Laravel Setup Commands](laravel-setup-commands.md)
+- [PHP Programming Tricks](php-programming-tricks.md)
+
+- [PHP Framework Interop Group](https://www.php-fig.org/) - aka "php fig". If you don't know what php-fig is, you should probably find out. It's sort of like a [cabal of influential PHP framework authors](https://www.php-fig.org/personnel/) and other highly opinionated php coders. They create the PSRs (PHP Standards Recommendations) that have resulted in huge progress in improving PHP and PHP frameworks since they created the first PSRs way back in...2009? That's like a 1000 PHP years. Among their many accomplishments, they finally settled the age-old "tabs-vs-spaces" debate once and for all (PSR-2). Well, okay not really, but at least they picked one to be a standard. Spoiler alert -- it was spaces. As time has gone on, the membership has changed, sometimes in fits of public spats. Many of the more important original members left the group, but its legacy remains important and relevant. The FIG advanced php development in a huge way and it may still have some relevance in the future. 
+
+- [PHP Standards Recommendations](https://www.php-fig.org/psr/) - The PSRs created by the aforementioned FIG. There are 13 accepted PSRs (currently numbering up to 18). Since most of the heavy lifting has already been done, the pace of new standards has slowed in the past few years. There's a couple of PSRs currently in DRAFT stage, 3 abandoned and 2 deprecated standards. It's not essential to memorize all the standards, but it's a good idea to at least read through all the current ones so you know what they are and understand what's expected in general by the PHP community in a modern PHP framework or library. At the very least, get to know PSR-4 so you understand how proper autoloading is usually done in PHP and composer. 

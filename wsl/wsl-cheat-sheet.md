@@ -68,5 +68,15 @@ Not sure if this woks on all distros, but in Ubuntu on WSL, simply open `/root/.
 
 Now your su commands will still be colored if you're using a terminal that supports it such as ConEmu.
 
+## Fix bad default permissions on files and directories
 
+Add this to ~/.profile
+
+```bash
+# Fix bad default permissions - mask out the group and others
+# write bit for both files and directories
+if [[ "$(umask)" = "0000" ]]; then
+  umask 0022
+fi
+```
 
