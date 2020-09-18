@@ -24,3 +24,13 @@ This list does not include most of the Adobe tools because you already know abou
 
 [VectorMagic](https://vectormagic.com/) - It can autotrace raster images at a really high quality, but unfortunately it ain't free...not even close. Costs $9.95 / month or $295.00 for the desktop version and they don't bother to tell you about the cost until after you upload an image, convert it to vectors and then try to download it. I call bullshit!! 
 
+## Adobe Tools
+
+Okay, I said I wasn't including them, but I needed a place to put free tools related to Adobe products such as free photoshop brushes...
+
+### Free Photoshop Brushes
+
+- https://www.brusheezy.com/
+
+### 
+

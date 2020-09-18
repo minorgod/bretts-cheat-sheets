@@ -1,5 +1,27 @@
 # WSL Cheat Sheet
 
+## Install WSL
+
+Open Powershell as admin and type
+
+```powershell
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+```
+
+That will install WSL1. To install WSL2 now type
+
+```powershell
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+Restart your machine then open powershell as admin again and type
+
+```powershell
+wsl --set-default-version 2
+```
+
+You might see this message after running that command: `WSL 2 requires an update to its kernel component. For information please visit https://aka.ms/wsl2kernel`. Please follow the link (https://aka.ms/wsl2kernel) and install the MSI from that page to install a Linux kernel on your machine for WSL 2 to use. Then try running the above command again and it should work. 
+
 ## Set Hypervisor Launch Type
 
 This will Enable or Disable VT-X so you can run VMs that don't play nice with Hyper-V (Note: this will break WSL until you re-enable it and reboot!!!!) Open an elevated command prompt and run these commands to....

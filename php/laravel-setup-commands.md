@@ -20,6 +20,44 @@ sed -E -i "s/DB_CONNECTION=mysql/DB_CONNECTION=sqlite/" ./.env
 sed -E -i "s/(DB_DATABASE=laravel)/#\1/" ./.env
 ```
 
+## Install Laravel IDE Helper
+
+Check out the [Larvel IDE Helper github project](https://github.com/barryvdh/laravel-ide-helper) for full documentation. 
+
+```bash
+composer require --dev barryvdh/laravel-ide-helper
+php artisan clear-compiled
+# PHPDoc generation for Laravel Facades
+php artisan ide-helper:generate
+# PHPDocs for models - this only works if you have a db to instrospect for column and relationship info. 
+php artisan ide-helper:models
+# You can force the phpdoc comments to be written to models by adding --write 
+# but be sure you have your files committed to GIT or backed up somewhere first. 
+# php artisan ide-helper:models --write
+# PhpStorm Meta file
+php artisan ide-helper:meta
+```
+
+Also add this to your composer "scripts" section:
+
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
+        ]
+    },
+}
+```
+
+You can also publish the config file to change implementations (ie. interface to specific class) or set defaults for --helpers.
+
+```bash
+php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config
+```
+
 ## Install Laravel UI package to generate basic scaffolding
 
 ```
@@ -80,5 +118,11 @@ composer dump autoload
 yarn
 yarn add bootstrap jquery popper.js @fortawesome/fontawesome-free
 yarn run dev
+```
+
+## Install PHP Code Sniffer to help enforce PSR coding standards
+
+```
+composer global require "squizlabs/php_codesniffer=*"
 ```
 

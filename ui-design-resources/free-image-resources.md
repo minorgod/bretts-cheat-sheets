@@ -51,7 +51,9 @@ Sites offering free images, placeholder images, and other visual design stuff.
 ## Lorem Ipsum Text Generators
 
 - https://www.lipsum.com/
-
 - https://loremipsum.io/
-
 - https://generator.lorem-ipsum.info/
+
+## Free Photoshop Brushes
+
+- https://www.brusheezy.com/
