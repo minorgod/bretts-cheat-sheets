@@ -1,132 +1,8 @@
 # Streaming Video Info
 
-RTMP and SRT are great bets for first-mile contribution, while both DASH and HLS lead the way when it comes to playback. That’s why we’re especially excited to see low-latency CMAF for DASH and Low-Latency HLS take off. But you may be looking to deploy a one-to-few conference, in which case WebRTC would be better suited.
+[Here's a great overview of](streaming-protocols.md) all the streaming video protocols.
 
-## Traditional Streaming Protocols
-
-### RTMP - Real Time Messaging Protocol
-
-Developed by Adobe, based on Flash video format. One of the oldest, but still most widely used and supported. Reliable and low-latency. 
-
-- **[Audio Codecs:](https://www.wowza.com/blog/best-audio-codecs-live-streaming)** AAC, AAC-LC, HE-AAC+ v1 & v2, MP3, Speex, Opus, Vorbis
-- [**Video Codecs:** ](https://www.wowza.com/blog/video-codecs-encoding)H.264, VP8, VP6, Sorenson Spark®, Screen Video v1 & v2
-- **Playback Compatibility:** Not widely supported (Flash Player, Adobe AIR, RTMP-compatible players)
-- **Benefits:** Low-latency and requires no buffering
-- **Drawbacks:** Not optimized for quality of experience or scalability
-- **Latency**: 5 seconds
-- **Variant Formats**: RTMPT (tunneled through HTTP), RTMPE (encrypted), RTMPTE (tunneled and encrypted), [RTMPS (encrypted over SSL)](https://www.wowza.com/blog/facebook-live-rtmps), [RTMFP (travels over UDP instead of TCP)](https://blog.stackpath.com/rtmp/)
-
-### RTSP/RTP - Real Time Streaming Protocol  / Real Time Transport Protocol. 
-
-RTSP is a presentation-layer protocol that lets end users command media servers via pause and play capabilities, RTP is a transport protocol used to move said data. It’s supported by UDP at this same layer.
-
-- [**Audio Codecs:**](https://www.wowza.com/blog/best-audio-codecs-live-streaming) AAC, AAC-LC, HE-AAC+ v1 & v2, MP3, Speex, Opus, Vorbis
-- [**Video Codecs:**](https://www.wowza.com/blog/video-codecs-encoding) H.265 (preview), H.264, VP9, VP8
-- **Playback Compatibility:** Not widely supported (Quicktime Player and other RTSP/RTP-compliant players, VideoLAN VLC media player, 3Gpp-compatible mobile devices)
-- **Benefits:** Low-latency and requires no buffering
-- **Drawbacks:** Not optimized for quality of experience and scalability
-- **Latency:** 2 seconds
-- **Variant Formats:** The entire stack of RTP, RTCP (Real-Time Control Protocol), and RTSP is often referred to as RTSP
-
-## Adaptive HTTP-Based Streaming Protocols
-
-[Streams deployed over HTTP are not technically “streams.”](http://www.onlinevideo.net/2011/05/streaming-vs-progressive-download-vs-adaptive-streaming/) Rather, they’re progressive downloads sent via regular web servers. Using [adaptive bitrate streaming](https://www.wowza.com/blog/adaptive-bitrate-streaming), HTTP-based protocols deliver the best video quality and viewer experience possible — no matter the connection, software, or device. Some of the most common HTTP-based protocols include [MPEG-DASH](https://www.wowza.com/blog/mpeg-dash-dynamic-adaptive-streaming-over-http) and Apple’s HLS.
-
-### Apple HLS
-
-Since Apple’s a major player in the world of internet-connected devices, it follows that [Apple’s HLS protocol](https://www.wowza.com/blog/hls-streaming-protocol) rules the digital video landscape. For one, the protocol supports [adaptive bitrate streaming](https://www.wowza.com/blog/adaptive-bitrate-streaming), which is key to viewer experience. More importantly, a stream delivered via HLS will play back on the majority of devices — thereby expanding your audience.
-
-While HLS support was initially limited to iOS devices such as iPhones and iPads, native support has since been added to a wide range of platforms. All Google Chrome browsers, as well as Android, Linux, Microsoft, and MacOS devices can play streams delivered using HLS.
-
-- [**Audio Codecs:**](https://www.wowza.com/blog/best-audio-codecs-live-streaming) AAC-LC, HE-AAC+ v1 & v2, xHE-AAC, Apple Lossless, FLAC
-- [**Video Codecs:**](https://www.wowza.com/blog/video-codecs-encoding) H.265, H.264
-- **Playback Compatibility:** Great (All Google Chrome browsers; Android, Linux, Microsoft, and MacOS devices; several set-top boxes, smart TVs, and other players)
-- **Benefits:** Adaptive bitrate and widely supported
-- **Drawbacks:** Quality of experience is prioritized over low latency
-- **Latency:** 6-30 seconds (lower latency only possible when tuned)
-- **Variant Formats:** Low-Latency HLS (see below), PHLS (Protected HTTP Live Streaming)
-
-## Low-Latency HLS
-
-Mid 2019, [Apple announced an extension to their HLS protocol](https://www.wowza.com/blog/apple-low-latency-hls) designed to drive latency down at scale. The protocol achieves this using HTTP/2 PUSH delivery combined with shorter media chunks. Unlike standard HLS, Apple Low-Latency HLS doesn’t yet support adaptive bitrate streaming — but it is on the roadmap.
-
-- **Playback Compatibility:** Any players that aren’t optimized for Low-Latency HLS can fall back to standard (higher-latency) HLS behavior
-- **Benefits:** Low latency meets HTTP-based streaming
-- **Drawbacks:** As an emerging spec, vendors are still implementing support
-- **Latency:** 3 seconds or less
-
-*Note: Since posting this blog, the [Low-Latency HLS](https://www.wowza.com/blog/apple-low-latency-hls) specification has been incorporated into the [overarching HLS standard](https://www.wowza.com/blog/hls-streaming-protocol). To learn more, [check out our article on the update.](https://www.wowza.com/blog/ietf-incorporates-low-latency-hls-into-the-hls-spec)*
-
-## MPEG-DASH
-
-When it comes to [MPEG-DASH](https://www.wowza.com/blog/mpeg-dash-dynamic-adaptive-streaming-over-http), the acronym spells out the story. The Moving Pictures Expert Group (MPEG), an international authority on digital audio and video standards, developed Dynamic Adaptive Streaming over HTTP (DASH) as an industry-standard alternative to HLS. Basically, with DASH you get an open-source option. But because Apple tends to priorities its proprietary software, support for DASH plays second fiddle.
-
-- [**Audio Codecs**:](https://www.wowza.com/blog/best-audio-codecs-live-streaming) Codec-agnostic
-- [**Video Codecs:**](https://www.wowza.com/blog/video-codecs-encoding) Codec-agnostic
-- **Playback Compatibility:** Good (All Android devices; most post-2012 Samsung, Philips, Panasonic, and Sony TVs; Chrome, Safari, and Firefox browsers)
-- **Benefits:** Vendor independent, international standard for adaptive bitrate
-- **Drawbacks:** Not supported by iOS or Apple TV
-- **Latency:** 6-30 seconds ([lower latency only possible when tuned](https://www.wowza.com/docs/how-to-configure-mpeg-dash-packetization-mpegdashstreaming))
-- **Variant Formats:** MPEG-DASH CENC (Common Encryption)
-
-## Low-Latency CMAF for DASH
-
-The Common Media Application Format, or [CMAF](https://www.wowza.com/blog/what-is-cmaf), is in itself is a media format. But when paired with [chunked encoding](https://www.wowza.com/blog/low-latency-cmaf-chunked-transfer-encoding#chunked-encoding) and [chunked transfer encoding](https://www.wowza.com/blog/low-latency-cmaf-chunked-transfer-encoding#chunked-transfer-encoding) for delivery over DASH, it should support sub-three-second delivery. While its transfer setup differs from that of Low-Latency HLS, the use of shorter data segments is quite similar.
-
-- **Playback Compatibility:** Any players that aren’t optimized for low-latency CMAF for DASH can fall back to standard (higher-latency) DASH behavior
-- **Benefits:** Low latency meets HTTP-based streaming
-- **Drawbacks:** As an emerging spec, vendors are still implementing support
-- **Latency:** 3 seconds or less
-
-## Microsoft Smooth Streaming
-
-Microsoft developed Microsoft Smooth Streaming for use with Silverlight player applications. It enables adaptive delivery to all Microsoft devices.
-
-- [**Audio Codecs:**](https://www.wowza.com/blog/best-audio-codecs-live-streaming) AAC, MP3, WMA
-- [**Video Codecs:** ](https://www.wowza.com/blog/video-codecs-encoding)H.264, VC-1
-- **Playback Compatibility:** Good (Microsoft and iOS devices, Xbox, many smart TVs)
-- **Benefits:** Adaptive bitrate and supported by iOS
-- **Drawbacks:** Proprietary technology
-- **Latency:** 6-30 seconds ([lower latency only possible when tuned](https://www.wowza.com/docs/how-to-configure-microsoft-smooth-streaming-packetization-smoothstreaming))
-
-## Adobe HDS
-
-HDS was developed for use with Flash Player applications as the first adaptive bitrate protocol. Because the end-of-life date for Flash is looming, it’s fallen out of favor.
-
-- [**Audio Codecs:**](https://www.wowza.com/blog/best-audio-codecs-live-streaming) AAC, MP3
-- [**Video Codecs:**](https://www.wowza.com/blog/video-codecs-encoding) H.264, VP6
-- **Playback Compatibility:** Not widely supported (Flash Player, Adobe AIR)
-- **Benefits:** Adaptive bitrate technology for Flash
-- **Drawbacks:** Proprietary technology with lacking support
-- **Latency:** 6-30 seconds ([lower latency only possible when tuned](https://www.wowza.com/docs/how-to-configure-adobe-hds-packetization-sanjosestreaming))
-
-## Emerging Technologies
-
-Last but not least, new technologies like WOWZ, WebRTC, and SRT were designed with latency in mind. Similar to low-latency CMAF for DASH and Apple Low-Latency HLS, these protocols continue to evolve.
-
-## SRT
-
-This open-source protocol is recognized as a proven alternative to proprietary transport technologies — helping to deliver reliable streams, regardless of network quality. From recovering lost packets to preserving timing behavior, [SRT](https://www.wowza.com/low-latency/SRT-secure-reliable-transport) was designed to solve the challenges of video contribution and distribution across the public internet. Although it’s quickly taking the industry by storm, SRT is most often used for first-mile contribution rather than last-mile delivery.
-
-- [**Audio Codecs:**](https://www.wowza.com/blog/best-audio-codecs-live-streaming) Codec-agnostic
-- [**Video Codecs:**](https://www.wowza.com/blog/video-codecs-encoding) Codec-agnostic
-- **Playback Compatibility:** Limited (currently used for contribution)
-- **Benefits:** High-quality, low-latency video over suboptimal networks
-- **Drawbacks:** Playback support is still in the works
-- **Latency:** 3 seconds or less
-
-## WebRTC
-
-[WebRTC](https://www.wowza.com/blog/what-is-webrtc) is a combination of standards, protocols, and JavaScript APIs that enables real-time communications (RTC, hence its name). Users connecting via Chrome, Firefox, or Safari can communicate directly through their browsers — enabling sub-500 millisecond latency. [According to Google](https://blog.chromium.org/2020/05/celebrating-10-years-of-webm-and-webrtc.html), “with Chrome, Edge, Firefox, and Safari supporting WebRTC, more than 85% of all installed browsers globally have become a client for real-time communications on the internet.”
-
-- [**Audio Codecs:**](https://www.wowza.com/blog/best-audio-codecs-live-streaming) Opus, iSAC, iLBC
-- [**Video Codecs:** ](https://www.wowza.com/blog/video-codecs-encoding)H.264, VP8, VP9
-- **Playback Compatibility:** Chrome, Firefox, and Safari support WebRTC without any plugin
-- **Benefits:** Super fast and browser-based
-- **Drawbacks:** Designed for video conferencing and not scale
-- **Latency:** Sub-500-millisecond delivery
-
-# Streaming Video Production Software
+## Streaming Video Production Software
 
 Open Broadcaster Software (OBS) - [OBS Studio](https://obsproject.com/)
 
@@ -134,7 +10,7 @@ Open Broadcaster Software (OBS) - [OBS Studio](https://obsproject.com/)
 
 Restream Studio - Kinda like an OBS but just for streaming to Restream.io.
 
-# Multi-Stream Services
+## Multi-Stream Services
 
 Stream to a single endpoint which "restreams" to multiple services
 
@@ -144,3 +20,9 @@ Stream to a single endpoint which "restreams" to multiple services
 Main Video Streaming Platforms
 
 [YouTube Events](https://studio.youtube.com/video/) - replacement for deprecated [YouTube Stream Now](https://www.youtube.com/live_dashboard?ar=1600126013044&nv=1) and old YouTube Events
+
+## Blockchain Based Streaming Services
+
+[d.tube]() - a youtube clone that uses a cryptocurrency called DTC to determine popularity and reward content creators. Files are generally hosted via IPFS servers. Looks like it could be a cool alternative content distribution concept, but it's currently full of mostly garbage. 
+
+[dlive.tv](https://dlive.tv/) - appears to be a live streaming version of d.tube, but it's powered by "Lemon" tokens (LT). Seems to be mostly full of gamer and conspiracy nut streamers. 

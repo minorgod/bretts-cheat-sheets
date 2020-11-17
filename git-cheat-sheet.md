@@ -36,8 +36,24 @@ git push
 ## Remove the history for a particular file
 
 You should really not do this if you've pushed this to a shared repository already, but if you REALLY need to get something out of your commit history, you can rewrite every commit so they no longer contain that file by using git filter-branch...
+NOTE: This is no longer recommended, use git-filter-repo instead.
 
 ```shell
 git filter-branch --tree-filter 'rm -f thenameofthefile.ext' HEAD
 ```
 
+## A Better way to remove a directory or file from git history
+
+Install [git-filter-repo](https://github.com/newren/git-filter-repo) via scoop package manager or some other means. 
+
+```
+scoop install git-filter-repo
+```
+
+Now you can remove a directory from git history with:
+
+```
+git filter-repo --path dir --invert-paths
+```
+
+Or just target a specific file path with the same command. 
