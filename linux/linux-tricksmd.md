@@ -1,3 +1,15 @@
+# Random Linux Stuff
+
+Nope, there's on rhyme or reason to what's in here. 
+
+## Find the sha256 fingerprint of all your ssh keys in a directory or subdir.
+
+This is particularly useful if you are trying to match the fingerprint of a local key to one on GitHub because you didn't have a good naming convention and got confused about which key was which. 
+
+```
+ find ./ -type f -name "*" -exec ssh-keygen -E sha256 -lf "{}" \;
+```
+
 ## Pipe a bunch of commands from a shell script into ssh...
 
 ```
