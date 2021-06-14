@@ -70,12 +70,16 @@ a2enmod php7.4
 
 ```shell
 apt-get install php-common php-mbstring php-mysql php-curl php-zip php-xdebug php-bcmath php-json php-tokenizer php-xml php-gd php7.4-opcache php-sqlite3 php-odbc
+
+#or
+apt-get install php7.4-common php7.4-mbstring php7.4-mysql php7.4-curl php7.4-zip php7.4-xdebug php7.4-bcmath php7.4-json php7.4-tokenizer php7.4-xml php7.4-gd php7.4-opcache php7.4-sqlite3 php7.4-odbc
+
 ```
 
 **Enable xdebug remote debugging if needed**
 
 ```shell
-echo 'xdebug.remote_enable=1' >> /etc/php/7.3/mods-available/xdebug.ini
+echo 'xdebug.remote_enable=1' >> /etc/php/7.4/mods-available/xdebug.ini
 ```
 
 **Check apache config syntax**
