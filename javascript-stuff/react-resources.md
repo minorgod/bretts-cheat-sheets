@@ -1,8 +1,51 @@
-# React js framework stuff
+# React.js Stuff
 
-## Boilerplate
+## Frameworks
 
-[RMUIF](https://github.com/rmuif) - "Supercharged version of Create React App with all the bells and whistles"
+### [Remix](https://remix.run/)
+
+ If you're not already using Next.js, [try Remix first](https://remix.run/). Trust me. It was created by the same guy that created React Router (like, the official one) and it provides some very opinionated "Best Practices" to make your sites load super fast, provide as way to keep your components fully decoupled and avoid "loading spinner hell" when your app is hitting a bunch of microservices to build its UI. By default you **WILL** end up with a much nicer end user experience if you start your project with Remix than you will if you start with Next.js or most other React frameworks. You can achieve the same thing with Next.js, but you probably won't because you won't consistently build your app the right way. Remix solves all the hard problems already. Just accept that they know better, and do what they say. You should really take an hour and [watch this interview with Michael Jackson](https://www.youtube.com/watch?v=xI-OggjrKLg) to understand why this framework is so great. 
+
+### **[Next.js](https://nextjs.org/)**
+
+If you've ignored what I said above, then you might just be smart enough to know why you want to [use Next.js](https://nextjs.org/). Or someone told you Next.js was cool and they seemed pretty convincing. Well, it's not like Next.js is bad. But if you haven't used either Next.js or Remix, try Remix first.  
+
+### Others
+
+Yes, there are many other React frameworks. If you want a [giant list of awesome React resources](https://github.com/topics/awesome?q=react), check out the ["Awesome" Topic on Github](https://github.com/topics/awesome).
+
+------
+
+## Create React App Improvements
+
+These packages will let you overcome the [limitations of webpack configuration in CRA](https://medium.com/@timarney/but-i-dont-wanna-eject-3e3da5826e39#.x81bb4kji). Be aware, those limitations are there for a reason, so think hard about whether you want/need to customize the webpack config used by CRA. These projects are listed in the order I would recommend you consider them. 
+
+### Create React App 1.x Compatible
+
+- See [React App Rewired](https://www.npmjs.com/package/react-app-rewired) below. 
+
+### Create React App 2.x Compatible
+
+- [React App Rewired](https://github.com/timarney/react-app-rewired) - Even though the maintainer says the project is now "lightly maintained since CRA2.0" (it was orginally made for CRA1.x), it's still probably the most widely maintained of the CRA config override projects. 
+
+  I'm not entirely sure if this project is now fully CRA2.0 compatible, but it seems like it, so it's the first one I'd try regardless if you are using CRA1.0 or CRA2.0. 
+
+- [Craco](https://github.com/gsoft-inc/craco) - Might actually be better than react-app-rewired, but seems less actively maintained. Despite having only hald the number of contributors as the react-app-rewired project, it has nearly as many projects using it, which seems like a good sign.
+
+- [Rescripts](https://github.com/harrysolovay/rescripts) - Looks pretty nice, but much smaller community that appears to be fairly inactive lately. Has extensive documentation and might be better architected than the other options. Offers a middleware layer with individual "rescripts" (conceptually similar to babel plugins). The rescripts API exposes a middleware entry, so that you can track your configurations as they are transformed. It should also be noted that Rescripts is compatible with many Webpack rewires built for react-app-rewired.
+
+- [customize-cra](https://github.com/arackaf/customize-cra) - I do not recommend you use this. It is a convenience layer on top of react-app-rewired that hasn't had a commit in 2 years. 
+
+There are a handful of other options out there, but these are the only ones I'd consider for now. When in doubt, I like to look at the community and the momentum behind a project when deciding on which one to use, but this is not always a perfect indicator of how great a project is. 
+
+|                   | Contrubutors | Projects Using It | Last Release | Forks | Stars | Watchers |
+| ----------------- | ------------ | ----------------- | ------------ | ----- | ----- | -------- |
+| react-app-rewired | 99           | 77,800            | 2/15/2022    | 402   | 8.9k  | 88       |
+| craco             | 52           | 75,252            | 12/9/2021    | 425   | 5.9k  | 56       |
+| customize-cra     | 38           | 37,735            | 05/28/2020   | 261   | 2.5k  | 21       |
+| rescripts         | 18           | 32                | 02/18/2021   | 54    | 1.1k  | 8        |
+
+## 
 
 ## Static Site Generators
 
